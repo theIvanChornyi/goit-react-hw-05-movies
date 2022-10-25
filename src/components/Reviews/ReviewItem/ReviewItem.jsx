@@ -5,8 +5,7 @@ import { normalizeAvatar } from 'services/helpers/avatarAdressNormalize';
 
 const MATCH_WORD = 'https://';
 export const ReviewItem = ({ review }) => {
-  const { author, author_details, content, created_at, updated_at, url } =
-    review;
+  const { author, author_details, content, created_at, url } = review;
   const { avatar_path, name, rating, username } = author_details;
   return (
     <li className={css.item}>
