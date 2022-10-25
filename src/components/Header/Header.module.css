@@ -16,9 +16,6 @@
   gap: 20px;
   list-style: none;
 }
-.headerItem{
-  
-}
 .headerItem:first-child{
   margin-left: 35px;
 }
@@ -27,8 +24,6 @@
   text-decoration: none;
   color:white;
 }
-
-
 
 :hover.headerLink,:focus.headerLink{
   color: red;

@@ -8,6 +8,7 @@
 }
 body {
   margin: 0;
+  background-color: #221f1f;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -16,4 +17,7 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+ a.active {
+  color: red
 }
