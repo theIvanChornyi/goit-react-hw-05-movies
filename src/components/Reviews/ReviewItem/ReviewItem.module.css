@@ -7,9 +7,7 @@
 .item:not(:last-child){
   margin-bottom: 20px;
 }
-.unit{
 
-}
 .userCard{
   display: flex;
   gap: 10px;
@@ -18,7 +16,6 @@
 .thumb{
   width: 75px;
 }
-.userData{}
 .userText{
   margin-bottom: 5px;
 }
