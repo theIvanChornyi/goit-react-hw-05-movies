@@ -1,7 +1,7 @@
 import { getMovieDetails } from 'services/MovieAPI/API';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Movie } from 'components/Movie';
+// import { Movie } from 'components/Movie';
 
 const MoviePage = () => {
   const [movie, setMovie] = useState(null);
@@ -10,6 +10,7 @@ const MoviePage = () => {
   useEffect(() => {
     try {
       get();
+      console.log('movie', movie);
     } catch (error) {
       console.log('error', error);
     }
