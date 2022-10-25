@@ -8,7 +8,11 @@ const MovieDetails = () => {
   const { movieId } = useParams();
 
   useEffect(() => {
-    get();
+    try {
+      get();
+    } catch (error) {
+      console.log('error', error);
+    }
     async function get() {
       const responce = await getMovieDetails(movieId);
       setMovie({ ...responce });

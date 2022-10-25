@@ -22,7 +22,7 @@ export const MovieAtributes = ({ movie }) => {
       </li>
       <li className={css.item}>
         <p className={css.paramName}>Budget:</p>
-        <p className={css.property}>{budget}</p>
+        <p className={css.property}>{(budget / 1000000).toFixed(1)}M $</p>
       </li>
       <li className={css.item}>
         <p className={css.paramName}>Original name:</p>
@@ -42,7 +42,7 @@ export const MovieAtributes = ({ movie }) => {
       </li>
       <li className={css.item}>
         <p className={css.paramName}>Duration:</p>
-        <p className={css.property}>{runtime / 60}</p>
+        <p className={css.property}>{(runtime / 60).toFixed(2)} h</p>
       </li>
       <li className={css.item}>
         <p className={css.paramName}>Countries:</p>

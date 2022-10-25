@@ -1,3 +1,4 @@
+import { Outlet, NavLink } from 'react-router-dom';
 import css from './Movie.module.css';
 import { ProdactionCompany } from './ProdactionCompany';
 import { MovieAtributes } from './MovieAtributes';
@@ -12,7 +13,6 @@ export const Movie = ({ movie }) => {
     tagline = '',
     production_companies = [],
   } = movie;
-
   return (
     <section
       className={css.filmSection}
@@ -28,7 +28,6 @@ export const Movie = ({ movie }) => {
           <div className={css.description}>
             <MovieAtributes movie={movie} />
             <p className={css.overview}>{overview}</p>
-
             <ul className={css.companies}>
               {production_companies.map(company => {
                 if (!company.logo_path) {
@@ -51,9 +50,22 @@ export const Movie = ({ movie }) => {
               />
             </div>
             <p className={css.tag}>{tagline}</p>
+            <ul className={css.links}>
+              <li className={css.linkItem}>
+                <NavLink className={css.learnMore} to="cast">
+                  Learn more about cast
+                </NavLink>
+              </li>
+              <li className={css.linkItem}>
+                <NavLink className={css.learnMore} to="reviews">
+                  Reviews
+                </NavLink>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
+      <Outlet />
     </section>
   );
 };

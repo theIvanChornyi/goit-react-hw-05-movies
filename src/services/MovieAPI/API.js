@@ -19,3 +19,23 @@ export async function getMovieDetails(id) {
   });
   return data;
 }
+export async function getCast(id) {
+  const { data } = await axios.get(`/3/movie/${id}/credits`, {
+    params: {
+      api_key: API_KEY,
+      language: 'en-US',
+    },
+  });
+  return data;
+}
+
+export async function getReview(id) {
+  const { data } = await axios.get(`/3/movie/${id}/reviews`, {
+    params: {
+      api_key: API_KEY,
+      language: 'en-US',
+      page: 1,
+    },
+  });
+  return data;
+}
