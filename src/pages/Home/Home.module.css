@@ -3,7 +3,6 @@
 }
 .mainTitle{
   text-align: center;
-  text-decoration: none;
   font-size: 32px;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.4);
@@ -14,20 +13,21 @@
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
   gap: 30px;
   justify-content: center;
+
+  padding: 10px;
   list-style: none;
   overflow: hidden;
 }
 .card{
-  position: relative;
-  padding: 10px;
   border-radius: 6px;
   overflow: hidden;
 }
 
-.card:hover,.card:focus{
-  background: #2a2727;
-}
 .link{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   text-decoration: none;
   font-size: 20px;
   line-height: 24px;
@@ -56,13 +56,9 @@
   opacity: 0;
 }
 .thumb{
+  position: relative;
   border-radius: 6px;
   overflow: hidden;
-}
-
-.image{
-  width: 100%;
-  height: auto;
 }
 
 .filmName{

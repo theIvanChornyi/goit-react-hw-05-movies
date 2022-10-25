@@ -6,12 +6,20 @@
   margin: 0;
   box-sizing:border-box;
 }
+ul,ol{
+  list-style: none;
+}
 body {
   margin: 0;
   background-color: #221f1f;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 code {

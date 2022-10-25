@@ -19,15 +19,15 @@ const Home = () => {
   return (
     <section className={css.films}>
       <h2 className={css.mainTitle}>Most trending films today</h2>
-      <ol className={css.gallery}>
+      <ul className={css.gallery}>
         {films.map(({ id, name, title, poster_path }) => {
           return (
             <li key={id} className={css.card}>
               <NavLink className={css.link} to={`/movies/${id}`}>
-                <div className={css.overlay}></div>
                 <div className={css.thumb}>
+                  <div className={css.overlay}></div>
+
                   <img
-                    className={css.image}
                     src={`https://image.tmdb.org/t/p/w400${poster_path}`}
                     alt={name ?? title}
                   />
@@ -37,7 +37,7 @@ const Home = () => {
             </li>
           );
         })}
-      </ol>
+      </ul>
     </section>
   );
 };

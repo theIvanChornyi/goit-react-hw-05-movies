@@ -1,0 +1,17 @@
+.company{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color:#72717188;
+  border-radius:6px;
+  overflow: hidden;
+}
+.thumb{
+  width: 100px;
+  height: 100px;
+  height: auto;
+  border-radius:50%;
+  overflow: hidden;
+}
+
+

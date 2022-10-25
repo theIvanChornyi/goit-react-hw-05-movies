@@ -1,0 +1,58 @@
+.filmSection {
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.film {
+display: flex;
+  gap: 30px;
+  padding: 20px 10px;
+  color:white;
+}
+
+.preview{
+  display: flex;
+}
+.text{
+  order: 1;
+}
+.mainTitle {
+  font-size: 32px;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  margin-bottom: 20px;
+}
+.picture{
+order: 2;
+}
+
+.thumb {
+  width: 300px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0 auto 20px;
+}
+.tag{
+  text-align: center;
+  font-size: 20px;
+}
+.description{
+  max-width: 700px;
+  padding: 10px;
+  background-color: #2a272788;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.overview{
+  min-width: 600px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: white;
+}
+.companies{
+display: flex;
+align-items: center;
+gap: 10px;
+
+}
