@@ -1,0 +1,1 @@
+export { MoviePreviewCard } from './MoviePreviewCard';

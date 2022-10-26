@@ -39,3 +39,14 @@ export async function getReview(id) {
   });
   return data;
 }
+export async function getMovieByName(query, page) {
+  const { data } = await axios.get(`/3/search/movie`, {
+    params: {
+      api_key: API_KEY,
+      language: 'en-US',
+      page,
+      query,
+    },
+  });
+  return data;
+}

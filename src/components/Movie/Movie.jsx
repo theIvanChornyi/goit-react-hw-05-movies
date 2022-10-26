@@ -2,6 +2,7 @@ import { Outlet, NavLink } from 'react-router-dom';
 import css from './Movie.module.css';
 import { ProdactionCompany } from './ProdactionCompany';
 import { MovieAtributes } from './MovieAtributes';
+import defaulFilmPic from 'img/defaultMovie.jpg';
 
 export const Movie = ({ movie }) => {
   const {
@@ -45,7 +46,11 @@ export const Movie = ({ movie }) => {
           <div className={css.picture}>
             <div className={css.thumb}>
               <img
-                src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                src={
+                  poster_path
+                    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                    : defaulFilmPic
+                }
                 alt={title ?? name}
               />
             </div>

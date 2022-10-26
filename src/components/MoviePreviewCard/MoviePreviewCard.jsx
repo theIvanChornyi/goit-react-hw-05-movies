@@ -1,0 +1,28 @@
+import { Link } from 'react-router-dom';
+import defaulMoviePoster from 'img/defaultMovie.jpg';
+import css from './MoviePreviewCard.module.css';
+
+export const MoviePreviewCard = ({ data }) => {
+  const { poster_path, title, release_date, id, overview } = data;
+  return (
+    <li className={css.item}>
+      <Link className={css.link} to={`/movies/${id}`}>
+        <div className={css.thumb}>
+          <img
+            src={
+              poster_path
+                ? `https://image.tmdb.org/t/p/w200${poster_path}`
+                : defaulMoviePoster
+            }
+            alt={title}
+          />
+        </div>
+        <span>
+          <p className={css.subtitle}>{title}</p>
+          <p className={css.text}>{release_date}</p>
+          <p className={css.text}>{overview}</p>
+        </span>
+      </Link>
+    </li>
+  );
+};

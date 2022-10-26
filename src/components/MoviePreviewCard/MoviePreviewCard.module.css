@@ -1,0 +1,39 @@
+.item{
+  padding: 10px;
+  background-color: #2a272788;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.item:not(:last-child) {
+  margin-bottom: 15px;
+}
+.link{
+  display: flex;
+  gap: 15px;
+  text-decoration: none;
+  color: #fff;
+
+}
+.link:hover .thumb,
+.link:focus .thumb{
+  transform: scale(1.01);
+}
+.link:hover .subtitle,
+.link:focus .subtitle {
+  color:red;
+}
+
+.thumb{
+  width: 100px;
+  flex-shrink: 0;
+  transition: transform linear 200ms;
+}
+.subtitle{
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 10px;
+  transition: color linear 200ms;
+}
+.text:not(:last-child){
+  margin-bottom: 10px;
+}
