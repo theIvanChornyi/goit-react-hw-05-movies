@@ -3,6 +3,7 @@
   align-items: center;
   border-radius:6px;
   overflow: hidden;
+  cursor:help;
 }
 .thumb{
   display: block;

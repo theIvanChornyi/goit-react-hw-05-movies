@@ -6,6 +6,7 @@ export const ProdactionCompany = ({ company }) => {
       <div className={css.thumb}>
         {logo_path && (
           <img
+            title={name}
             className={css.image}
             src={`https://image.tmdb.org/t/p/original${logo_path}`}
             alt={name}

@@ -6,6 +6,7 @@
 
 .thumb {
   width: 75px;
+  flex-shrink: 0;
 }
 
 .description {

@@ -70,6 +70,7 @@ color:red
   background-color: #2a272788;
   border-radius: 6px;
   overflow: hidden;
+  min-height: 200px;
 }
 .overview{
   min-width: 600px;
@@ -79,9 +80,10 @@ color:red
   color: white;
 }
 .companies{
-display: flex;
-justify-content: center;
-gap: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 20px;
 }
 
 

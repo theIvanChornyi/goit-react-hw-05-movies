@@ -1,7 +1,19 @@
+@keyframes visible{
+  0% {
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
 .form{
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+}
+
+.wrapper{
+  position: relative;
 }
 .input{
   height: 40px;
@@ -28,6 +40,9 @@
   color:red;
 }
 .button{
+  position: absolute;
+  right: 0;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,11 +57,15 @@
   border:none;
   border-radius:2px;
 
-  transition: transform linear 200ms, background-color linear 200ms;
+  transform: translateX(calc(100% + 10px));
+  transition: transform linear 100ms, background-color linear 200ms;
+
+  animation: visible 1000ms;
+  animation-direction: alternate;
 }
 
 .button:hover,.button:focus{
   cursor: pointer;
   background-color:#a19c9c88;
-  transform: scale(1.02);
+  transform: scale(1.02) translateX(calc(100% + 10px));
 }
