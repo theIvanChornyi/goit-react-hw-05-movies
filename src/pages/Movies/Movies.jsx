@@ -10,25 +10,35 @@ import { Paginator } from 'components/Paginator';
 import { SearchForm } from 'components/SearchForm';
 import { Spiner } from 'components/Spiner';
 import { ErrorMesage } from 'components/ErrorMesage';
+import { useSearchParams } from 'react-router-dom';
 
 const MoviePage = () => {
   const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState('');
-  const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [query, setQuery] = useSearchParams();
   const { isResolved, isLoad, isRejected, setStateMachine } = useStateMachine(
     STATE.IDLE
   );
 
+  const filmNameStr = query.get('filmName') ?? '';
+  const pageStr = query.get('pageNumber') ?? 1;
+
+  const handleWriteQuery = ({ value = filmNameStr, number = 1 }) => {
+    setQuery(value ? { filmName: value, pageNumber: number } : {});
+  };
+
   useEffect(() => {
-    if (query) {
+    if (filmNameStr) {
       setStateMachine(STATE.LOAD);
       get();
     }
 
     async function get() {
       try {
-        const { results, total_pages } = await getMovieByName(query, page);
+        const { results, total_pages } = await getMovieByName(
+          filmNameStr,
+          pageStr
+        );
         setMovies([...results]);
         setTotalPages(total_pages);
         setStateMachine(STATE.RESOLVE);
@@ -37,20 +47,12 @@ const MoviePage = () => {
         console.log(error.message);
       }
     }
-  }, [page, query, setStateMachine]);
+  }, [filmNameStr, pageStr, setStateMachine]);
 
-  const handleWriteQuery = query => {
-    setQuery(query);
-    setPage(1);
-  };
-
-  const handleChoosePage = number => {
-    setPage(number);
-  };
   const moviesAmount = movies.length;
   return (
     <section className={css.container}>
-      <SearchForm onHandleSubmit={handleWriteQuery} input={query} />
+      <SearchForm onHandleSubmit={handleWriteQuery} />
       {isLoad && <Spiner />}
       {moviesAmount > 0 && isResolved && (
         <ul className={css.moviesList}>
@@ -63,7 +65,7 @@ const MoviePage = () => {
         </ul>
       )}
       {isResolved && moviesAmount === 0 && (
-        <h2 className={css.atention}>
+        <h2 className={css.messageEmpty}>
           Unfortunately, we do not have information about film like {query}. :(
         </h2>
       )}
@@ -71,8 +73,8 @@ const MoviePage = () => {
       {totalPages > 1 && isResolved && (
         <Paginator
           totalPages={totalPages}
-          page={page}
-          paginationFunc={handleChoosePage}
+          page={pageStr}
+          paginationFunc={handleWriteQuery}
         />
       )}
     </section>

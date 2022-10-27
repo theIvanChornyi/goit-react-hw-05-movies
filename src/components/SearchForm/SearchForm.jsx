@@ -1,23 +1,28 @@
-import css from './SearchForm.module.css';
-import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 import { HiSearch } from 'react-icons/hi';
 
-const FIELD_NAME = 'film';
+import css from './SearchForm.module.css';
 
-export const SearchForm = ({ onHandleSubmit, input }) => {
-  const { register, handleSubmit, watch } = useForm();
-  const onSubmit = data => onHandleSubmit(data[FIELD_NAME]);
-  const value = watch(FIELD_NAME);
+export const SearchForm = ({ onHandleSubmit }) => {
+  const [query, setQuery] = useState('');
+
+  const onChange = e => setQuery(e.target.value);
+  const onSubmit = e => {
+    e.preventDefault();
+    onHandleSubmit({ value: query });
+  };
+
   return (
-    <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={css.form} onSubmit={onSubmit}>
       <div className={css.wrapper}>
         <input
+          name="film"
+          onChange={onChange}
           placeholder="Film name"
           className={css.input}
-          defaultValue={value}
-          {...register(FIELD_NAME)}
+          value={query}
         />
-        {value && (
+        {query && (
           <button className={css.button} type="submit">
             <HiSearch />
           </button>
