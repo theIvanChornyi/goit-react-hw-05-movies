@@ -7,26 +7,62 @@
 }
 
 .film {
-  margin: 0 auto;
-  max-width: 1200px;
   display: flex;
   gap: 30px;
+
+  max-width: 1200px;
+
+  margin: 0 auto;
   padding: 20px 10px;
+
   color:white;
 }
+
 
 .preview{
   display: flex;
 }
 .text{
+  position: relative;
   order: 1;
 }
+
+.goBackLink {
+  position: absolute;
+  right: 10px;
+  top: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px;
+
+  text-decoration: none;
+  color: white;
+
+  border: 1px solid white;
+  border-radius: 6px;
+
+  transition: border-color linear 200ms, color linear 200ms;
+}
+.goBackLink:hover,.goBackLink:focus{
+  color:red;
+  border-color:red;
+}
+
+.iconBack {
+  color: inherit;
+}
 .mainTitle {
+  max-width: 500px;
   font-size: 32px;
   font-weight: 700;
   color: rgb(255, 255, 255);
   margin-bottom: 20px;
 }
+
 .picture{
 order: 2;
 }

@@ -1,10 +1,12 @@
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet, NavLink, useLocation, Link } from 'react-router-dom';
+import { AiOutlineRollback } from 'react-icons/ai';
 import css from './Movie.module.css';
 import { ProdactionCompany } from './ProdactionCompany';
 import { MovieAtributes } from './MovieAtributes';
 import defaulFilmPic from 'img/defaultMovie.jpg';
 
 export const Movie = ({ movie }) => {
+  const { state } = useLocation();
   const {
     name = '',
     title = '',
@@ -25,6 +27,10 @@ export const Movie = ({ movie }) => {
     >
       <div className={css.film}>
         <div className={css.text}>
+          <Link to={state?.from ?? '/'} className={css.goBackLink}>
+            <span>Go back!</span>
+            <AiOutlineRollback className={css.iconBack} />
+          </Link>
           <h2 className={css.mainTitle}>{title}</h2>
           <div className={css.description}>
             <MovieAtributes movie={movie} />
