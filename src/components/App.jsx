@@ -8,16 +8,17 @@ import { Reviews } from 'components/Reviews';
 
 export const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Header />}>
-        <Route index element={<Home />} />
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="movies" element={<MoviePage />} />
         <Route path="movies/:movieId" element={<MovieDetails />}>
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
-        <Route path="*" element={<div>404</div>} />
-      </Route>
-    </Routes>
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </>
   );
 };
