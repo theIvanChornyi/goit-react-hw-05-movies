@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import DefUser from 'img/defaultUser.jpg';
 
 import css from './CastItem.module.css';
@@ -8,6 +9,7 @@ export const CastItem = ({ item }) => {
     <li className={css.item}>
       <div className={css.thumb}>
         <img
+          width={'75px'}
           src={
             profile_path
               ? `https://image.tmdb.org/t/p/w500${profile_path}`
@@ -17,10 +19,19 @@ export const CastItem = ({ item }) => {
         />
       </div>
       <div className={css.description}>
-        <p>{character}</p>
-        <p>{name}</p>
-        <p>{gender === 1 ? 'Female' : 'Male'}</p>
+        {character && <p>{character}</p>}
+        {name && <p>{name}</p>}
+        {gender && <p>{gender === 1 ? 'Female' : 'Male'}</p>}
       </div>
     </li>
   );
+};
+
+CastItem.propTypes = {
+  item: PropTypes.shape({
+    gender: PropTypes.number,
+    name: PropTypes.string,
+    profile_path: PropTypes.string,
+    character: PropTypes.string,
+  }),
 };

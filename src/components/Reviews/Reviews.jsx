@@ -10,7 +10,7 @@ import { Spiner } from 'components/Spiner';
 import { ErrorMesage } from 'components/ErrorMesage';
 import { ReviewItem } from './ReviewItem';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [review, setReview] = useState([]);
   const { movieId } = useParams();
   const { isResolved, isLoad, isRejected, setStateMachine } = useStateMachine(
@@ -54,3 +54,5 @@ export const Reviews = () => {
     </div>
   );
 };
+
+export default Reviews;

@@ -19,12 +19,13 @@ export async function getMovieDetails(id) {
   });
   return data;
 }
-export async function getCast(id) {
+export async function getCast(id, signal) {
   const { data } = await axios.get(`/3/movie/${id}/credits`, {
     params: {
       api_key: API_KEY,
       language: 'en-US',
     },
+    signal,
   });
   return data;
 }

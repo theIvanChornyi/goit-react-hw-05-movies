@@ -1,6 +1,8 @@
+import PropTypes from 'prop-types';
 import css from './Paginator.module.css';
 
 export const Paginator = ({ totalPages, paginationFunc, page }) => {
+  const currentPage = +page;
   return (
     <div className={css.paginator}>
       <ul className={css.list}>
@@ -9,7 +11,7 @@ export const Paginator = ({ totalPages, paginationFunc, page }) => {
           return (
             <li key={number} className={css.item}>
               <button
-                className={page !== nextPage ? css.button : css.active}
+                className={currentPage !== nextPage ? css.button : css.active}
                 onClick={() => paginationFunc({ number: nextPage })}
                 type="button"
               >
@@ -21,4 +23,10 @@ export const Paginator = ({ totalPages, paginationFunc, page }) => {
       </ul>
     </div>
   );
+};
+
+Paginator.propTypes = {
+  totalPages: PropTypes.number,
+  paginationFunc: PropTypes.func,
+  page: PropTypes.string,
 };

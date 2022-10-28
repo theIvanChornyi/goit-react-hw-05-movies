@@ -1,20 +1,20 @@
-import { Outlet, NavLink, useLocation, Link } from 'react-router-dom';
-import { AiOutlineRollback } from 'react-icons/ai';
+import { Outlet, useLocation } from 'react-router-dom';
+import { Description } from './Description';
+import PropTypes from 'prop-types';
+
 import css from './Movie.module.css';
-import { ProdactionCompany } from './ProdactionCompany';
-import { MovieAtributes } from './MovieAtributes';
-import defaulFilmPic from 'img/defaultMovie.jpg';
+import { Preview } from './Preview';
 
 export const Movie = ({ movie }) => {
   const { state } = useLocation();
   const {
-    name = '',
-    title = '',
-    poster_path = '',
-    backdrop_path = '',
-    overview = '',
-    tagline = '',
-    production_companies = [],
+    name,
+    title,
+    poster_path,
+    backdrop_path,
+    overview,
+    tagline,
+    production_companies,
   } = movie;
   return (
     <section
@@ -26,57 +26,25 @@ export const Movie = ({ movie }) => {
       }}
     >
       <div className={css.film}>
-        <div className={css.text}>
-          <Link to={state?.from ?? '/'} className={css.goBackLink}>
-            <span>Go back!</span>
-            <AiOutlineRollback className={css.iconBack} />
-          </Link>
-          <h2 className={css.mainTitle}>{title}</h2>
-          <div className={css.description}>
-            <MovieAtributes movie={movie} />
-            <p className={css.overview}>{overview}</p>
-            <ul className={css.companies}>
-              {production_companies.map(company => {
-                if (!company.logo_path) {
-                  return null;
-                } else {
-                  return (
-                    <ProdactionCompany company={company} key={company.id} />
-                  );
-                }
-              })}
-            </ul>
-          </div>
-        </div>
-        <div className={css.preview}>
-          <div className={css.picture}>
-            <div className={css.thumb}>
-              <img
-                src={
-                  poster_path
-                    ? `https://image.tmdb.org/t/p/w500${poster_path}`
-                    : defaulFilmPic
-                }
-                alt={title ?? name}
-              />
-            </div>
-            <p className={css.tag}>{tagline}</p>
-            <ul className={css.links}>
-              <li className={css.linkItem}>
-                <NavLink className={css.learnMore} to="cast">
-                  Learn more about cast
-                </NavLink>
-              </li>
-              <li className={css.linkItem}>
-                <NavLink className={css.learnMore} to="reviews">
-                  Reviews
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <Preview filmCard={{ poster_path, title, name, tagline }} />
+        <Description
+          fields={{ title, movie, overview, production_companies }}
+          state={state}
+        />
       </div>
       <Outlet />
     </section>
   );
+};
+
+Movie.propTypes = {
+  movie: PropTypes.shape({
+    name: PropTypes.string,
+    title: PropTypes.string,
+    poster_path: PropTypes.string,
+    backdrop_path: PropTypes.string,
+    overview: PropTypes.string,
+    tagline: PropTypes.string,
+    production_companies: PropTypes.array,
+  }),
 };

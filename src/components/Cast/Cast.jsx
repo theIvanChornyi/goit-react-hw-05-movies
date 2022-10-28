@@ -11,7 +11,7 @@ import { CastItem } from './CastItem';
 import { Spiner } from 'components/Spiner';
 import { ErrorMesage } from 'components/ErrorMesage';
 
-export const Cast = () => {
+const Cast = () => {
   const [cast, setCast] = useState([]);
   const { movieId } = useParams();
   const { isResolved, isLoad, isRejected, setStateMachine } = useStateMachine(
@@ -31,8 +31,7 @@ export const Cast = () => {
         console.log(error.message);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [movieId, setStateMachine]);
   const isEmpty = cast.length < 1;
   return (
     <div className={css.wraper}>
@@ -55,3 +54,4 @@ export const Cast = () => {
     </div>
   );
 };
+export default Cast;

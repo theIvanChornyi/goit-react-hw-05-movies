@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 import defaulMoviePoster from 'img/defaultMovie.jpg';
 
@@ -15,6 +16,7 @@ export const MoviePreviewCard = ({ data }) => {
       >
         <div className={css.thumb}>
           <img
+            width={'100px'}
             src={
               poster_path
                 ? `https://image.tmdb.org/t/p/w200${poster_path}`
@@ -31,4 +33,14 @@ export const MoviePreviewCard = ({ data }) => {
       </Link>
     </li>
   );
+};
+
+MoviePreviewCard.propTypes = {
+  data: PropTypes.shape({
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    id: PropTypes.number,
+    overview: PropTypes.string,
+  }),
 };

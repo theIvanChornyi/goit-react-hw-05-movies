@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getMovies } from 'services/MovieAPI/API';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { STATE } from 'services/config/page.state';
 import { useStateMachine } from 'services/hooks/stateMachine';
@@ -41,17 +41,18 @@ const Home = () => {
           {films.map(({ id, name, title, poster_path }) => {
             return (
               <li key={id} className={css.card}>
-                <NavLink className={css.link} to={`/movies/${id}`}>
+                <Link className={css.link} to={`/movies/${id}`}>
                   <div className={css.thumb}>
                     <div className={css.overlay}></div>
 
                     <img
+                      width={'250px'}
                       src={`https://image.tmdb.org/t/p/w400${poster_path}`}
                       alt={name ?? title}
                     />
                   </div>
                   <p className={css.filmName}>{name ?? title}</p>
-                </NavLink>
+                </Link>
               </li>
             );
           })}

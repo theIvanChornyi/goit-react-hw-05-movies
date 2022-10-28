@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { HiSearch } from 'react-icons/hi';
 
@@ -30,4 +31,7 @@ export const SearchForm = ({ onHandleSubmit }) => {
       </div>
     </form>
   );
+};
+SearchForm.propTypes = {
+  onHandleSubmit: PropTypes.func,
 };

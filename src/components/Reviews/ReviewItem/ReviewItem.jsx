@@ -1,9 +1,9 @@
+import PropTypes from 'prop-types';
 import { AiOutlineLink } from 'react-icons/ai';
 import css from './ReviewItem.module.css';
 import DefUser from 'img/defaultUser.jpg';
+import { MATCH_WORD } from 'services/config/matchWords';
 import { normalizeAvatar } from 'services/helpers/avatarAdressNormalize';
-
-const MATCH_WORD = 'https://';
 
 export const ReviewItem = ({ review }) => {
   const { author, author_details, content, created_at, url } = review;
@@ -14,6 +14,7 @@ export const ReviewItem = ({ review }) => {
         <div className={css.userCard}>
           <div className={css.thumb}>
             <img
+              width={'75px'}
               src={
                 avatar_path ? normalizeAvatar(avatar_path, MATCH_WORD) : DefUser
               }
@@ -42,4 +43,19 @@ export const ReviewItem = ({ review }) => {
       </article>
     </li>
   );
+};
+
+ReviewItem.propTypes = {
+  review: PropTypes.shape({
+    author: PropTypes.string,
+    author_details: PropTypes.shape({
+      avatar_path: PropTypes.string,
+      name: PropTypes.string,
+      rating: PropTypes.number,
+      username: PropTypes.string,
+    }),
+    content: PropTypes.string,
+    created_at: PropTypes.string,
+    url: PropTypes.string,
+  }),
 };
